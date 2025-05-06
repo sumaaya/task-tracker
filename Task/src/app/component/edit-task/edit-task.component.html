@@ -1,0 +1,29 @@
+<div class="edit-container" *ngIf="!loading; else loadingTemplate">
+    <h2>Edit Task</h2>
+  
+    <form (ngSubmit)="updateTask()" class="edit-form">
+      <label for="title">Title</label>
+      <input type="text" id="title" [(ngModel)]="task.title" name="title" required />
+  
+      <label for="description">Description</label>
+      <textarea id="description" [(ngModel)]="task.description" name="description" rows="3" required></textarea>
+  
+      <label for="dueDate">Due Date</label>
+      <input type="date" id="dueDate" [(ngModel)]="task.dueDate" name="dueDate" required />
+  
+      <label class="status-checkbox">
+        <input type="checkbox" [(ngModel)]="task.completed" name="completed" />
+        Mark as Completed
+      </label>
+  
+      <div class="form-actions">
+        <button type="submit" class="save-btn">💾 Save</button>
+        <button type="button" class="cancel-btn" (click)="router.navigate(['/'])">❌ Cancel</button>
+      </div>
+    </form>
+  </div>
+  
+  <ng-template #loadingTemplate>
+    <p class="loading-text">Loading task...</p>
+  </ng-template>
+  

@@ -1,0 +1,15 @@
+<div class="details-container">
+  <div class="task-card">
+    <h2>{{ task.title }}</h2>
+    <p class="desc">{{ task.description }}</p>
+    <p class="date">Due Date: {{ task.dueDate }}</p>
+
+    <div class="status" [ngClass]="{ done: task.completed, pending: !task.completed }">
+      <span *ngIf="task.completed">✅ Completed</span>
+      <span *ngIf="!task.completed">❌ Not Completed</span>
+    </div>
+  </div>
+  
+
+  <a routerLink="/" class="back-link">← Back to Task List</a>
+</div>

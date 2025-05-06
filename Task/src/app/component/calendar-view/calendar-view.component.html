@@ -1,0 +1,22 @@
+<div class="calendar-container">
+    <h2>📅 Calendar View</h2>
+  
+    <div *ngIf="getSortedDates().length > 0; else noTasks">
+      <div class="calendar-day" *ngFor="let date of getSortedDates()">
+        <div class="date-header">{{ date }}</div>
+        <div class="task-list">
+          <div class="task-card" *ngFor="let task of groupedTasks[date]">
+            <div class="task-title" [class.completed]="task.completed">
+              ✅ {{ task.title }}
+            </div>
+            <div class="task-desc">{{ task.description }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #noTasks>
+      <p class="no-tasks">No tasks found on any date 💤</p>
+    </ng-template>
+  </div>
+  
